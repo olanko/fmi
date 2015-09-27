@@ -1,0 +1,11 @@
+//Fill in your local configuration
+
+var config = {};
+
+//Get your own FMI apikey from http://en.ilmatieteenlaitos.fi/open-data-manual.
+config.APIKEY = '';
+
+//Connection to Postgres database
+config.PG_CONNSTR = "postgres://passwd:user@server/database";
+
+module.exports = config;

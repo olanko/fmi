@@ -1,0 +1,22 @@
+{
+  "name": "fmi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fmi_request.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "olli@kaakki:projects/fmi"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "^1.0.6",
+    "pg": "^4.4.2",
+    "pg-native": "^1.9.0",
+    "pg-query-stream": "^0.7.0",
+    "xml-stream": "^0.4.5"
+  }
+}
