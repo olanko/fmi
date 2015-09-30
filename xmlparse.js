@@ -1,8 +1,10 @@
 var XmlStream = require('xml-stream');
 var config = require('./config');
 
-var parseXMLStream = function(stream) {
+var parseXMLStream = function(stream, cb) {
     var xml = new XmlStream(stream);
+
+    var measurements = [];
 
     // xml.on('startElement: BsWfs:ParameterName', function(e) {
     //     console.log(e);
@@ -13,8 +15,12 @@ var parseXMLStream = function(stream) {
     xml.on('updateElement: BsWfs:BsWfsElement', function(e) {
         if(e['BsWfs:ParameterName'] === 'Temperature') {
             var d = new Date(e['BsWfs:Time']);
-            console.log(d.toString() + ': ' + e['BsWfs:ParameterValue']);
+            measurements.push({time: d, value: e['BsWfs:ParameterValue']})
         }
+    });
+
+    xml.on('end', function() {
+        cb(measurements);
     });
 }
 
