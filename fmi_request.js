@@ -1,5 +1,6 @@
 var http = require('http');
 var XmlStream = require('xml-stream');
+var fs = require('fs');
 
 var config = require('./config');
 
@@ -20,13 +21,14 @@ console.log(url + query);
 
 http.get(url + query, function(res) {
     var xml = new XmlStream(res);
+    var os = fs.createWriteStream('data/response.xml')
 
-    // res.on('data', function(data) {
-    //     console.log('' + data);
-    // });
-    // // res.on('end', function() {
-    //     console.log('END');
-    // });
+    res.on('data', function(data) {
+        os.write(data);
+    });
+    res.on('end', function() {
+        os.end();
+    });
 
     // xml.on('startElement: BsWfs:ParameterName', function(e) {
     //     console.log(e);
