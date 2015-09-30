@@ -19,7 +19,6 @@ var query = '/wfs?request=getFeature&storedquery_id=' + storedquery_id + params;
 console.log(url + query);
 
 http.get(url + query, function(res) {
-    var xml = new XmlStream(res);
     var os = fs.createWriteStream('data/response.xml')
 
     res.on('data', function(data) {
