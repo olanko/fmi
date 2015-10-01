@@ -14,10 +14,8 @@ var parseXMLStream = function(stream, cb) {
         //     console.log(e);
         // });
         xml.on('updateElement: BsWfs:BsWfsElement', function(e) {
-            if(e['BsWfs:ParameterName'] === 'Temperature') {
-                var d = new Date(e['BsWfs:Time']);
-                measurements.push({time: d, value: e['BsWfs:ParameterValue']})
-            }
+            var d = new Date(e['BsWfs:Time']);
+            measurements.push({time: d, name: e['BsWfs:ParameterName'], value: e['BsWfs:ParameterValue']});
         });
 
         xml.on('end', function() {

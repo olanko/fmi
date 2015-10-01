@@ -11,8 +11,8 @@ save = function save(measurement) {
         }
 
         var query = client.query({
-          text: "INSERT INTO measurements(measurementid, val, ts) VALUES ($1, $2, $3);",
-          values: [1, measurement.value, measurement.time],
+          text: "INSERT INTO measurements(measurementid, name, val, ts) VALUES ($1, $2, $3, $4);",
+          values: [2, measurement.name, measurement.value, measurement.time],
           name: 'insert event'
         });
 
