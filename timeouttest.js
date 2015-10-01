@@ -1,4 +1,5 @@
-http = require('http');
+var http = require('http');
+var Promise = require('bluebird');
 
 function delay(time) {
   return new Promise(function (fulfill) {
