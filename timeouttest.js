@@ -31,9 +31,10 @@ function get(url) {
     });
 }
 
-timeout(get('http://www.hs.fi'), 1000).then(function(res) {
-    console.log(res);
-}, function(error) {
-    console.log(error);
-});
+timeout(get('http://www.hs.fi'), 1000)
+    .then(function(res) {
+            console.log(res);
+    }).catch(function(error) {
+        console.log(error);
+    });
 
