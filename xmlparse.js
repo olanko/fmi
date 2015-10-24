@@ -16,13 +16,18 @@ var parseXMLStream = function(stream, cb) {
         // });
         xml.on('updateElement: BsWfs:BsWfsElement', function(e) {
             var d = new Date(e['BsWfs:Time']);
-            measurements.push({time: d, name: e['BsWfs:ParameterName'], value: e['BsWfs:ParameterValue']});
+            measurements.push({
+                time: d,
+                name: e['BsWfs:ParameterName'],
+                value: e['BsWfs:ParameterValue'],
+                position: e['BsWfs:Location']['gml:Point']['gml:pos']
+            });
         });
 
         xml.on('end', function() {
             resolve(measurements);
         });
     });
-}
+};
 
 exports.parseXMLStream = parseXMLStream;
