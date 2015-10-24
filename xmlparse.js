@@ -1,5 +1,6 @@
 var XmlStream = require('xml-stream');
 var config = require('./config');
+var Promise = require('bluebird');
 
 var parseXMLStream = function(stream, cb) {
     return new Promise(function(resolve, reject) {
